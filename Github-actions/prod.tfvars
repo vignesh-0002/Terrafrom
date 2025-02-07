@@ -1,4 +1,4 @@
- #vpc
+###vpc_module
 cidr                         = "10.0.0.0/16"
 name                         = "vpc-module"
 enable_dns_hostnames         =  false
