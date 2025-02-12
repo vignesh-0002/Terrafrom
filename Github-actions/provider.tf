@@ -18,7 +18,6 @@ terraform {
 }
 
 # Configure the AWS Provider
-provider "aws" {
-  profile                = "AWS-Secrets"
-  region                 = "us-east-1"
-}
+#  profile                = "AWS-Secrets"
+#  region                 = "us-east-1"
+#}
