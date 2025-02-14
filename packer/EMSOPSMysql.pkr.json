@@ -1,4 +1,3 @@
- cat mysql.json
 {
 
     "builders": [
