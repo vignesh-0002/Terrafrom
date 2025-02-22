@@ -43,7 +43,9 @@ module "ec2" {
       name                         = var.name
       environment                  = var.environment
       tags                         = var.tags
-      ami                          = var.ami
+      ami_fe                       = var.ami_fe
+      ami_be                       = var.ami_be
+      ami_mysql                    = var.mysql
       instance_type                = var.instance_type
       associate_public_ip_address  = var.associate_public_ip_address 
       keypair-name                 = var.keypair-name  
