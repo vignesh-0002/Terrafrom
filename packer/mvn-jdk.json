@@ -36,14 +36,27 @@
             "echo 'export PATH=$M2_HOME/bin:$PATH' | sudo tee -a ~/.bashrc",
             "export PATH=$PATH:/opt/apache-maven-3.8.8/bin",
             "mvn -v"
+        ]
+      },
+      {
+        "type": "shell",
+        "inline": [
+          "echo 'Installing AWS CodeDeploy Agent...'",
 
+          "sudo apt-get install ruby-full -y",
+          "sudo apt-get install wget -y",
 
+          "cd /tmp",
+          "wget https://aws-codedeploy-us-east-1.s3.amazonaws.com/latest/install",
+          "chmod +x ./install",
+          "sudo ./install auto",
 
-
-
-
+          "sudo systemctl enable codedeploy-agent",
+          "sudo systemctl start codedeploy-agent",
+          "sudo systemctl status codedeploy-agent || echo 'CodeDeploy Agent failed to start'"
         ]
       }
+
     ]
 
 }
