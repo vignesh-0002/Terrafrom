@@ -51,7 +51,7 @@ resource "aws_key_pair" "this" {
 
 
 
-resource "aws_instance" "public_instance_module" {
+resource "aws_instance" "FE_instance_module" {
   ami                         =  var.ami_fe
   instance_type               =  var.instance_type
   key_name                    =  aws_key_pair.this.key_name
@@ -60,7 +60,7 @@ resource "aws_instance" "public_instance_module" {
   associate_public_ip_address =  var.associate_public_ip_address
   tags                        =  merge(
                                    {
-                                     Name        = "public_ec2.${var.name}"
+                                     Name        = "FE.${var.name}"
                                      Environment = var.environment
                                    },
                                    var.tags
@@ -70,7 +70,7 @@ resource "aws_instance" "public_instance_module" {
 
 #private_ec2
 
-resource "aws_instance" "public_instance_module" {
+resource "aws_instance" "BE_instance_module" {
   ami                              = var.ami_be
   instance_type                    = var.instance_type
   key_name                         = aws_key_pair.this.key_name
@@ -80,7 +80,7 @@ resource "aws_instance" "public_instance_module" {
   associate_public_ip_address      = false
   tags                             = merge(
                                         {
-                                          Name        = "private_ec2.${var.name}"
+                                          Name        = "BE_ec2.${var.name}"
                                           Environment = var.environment
                                         },
                                         var.tags
@@ -102,7 +102,7 @@ resource "aws_instance" "DB_instance_module" {
   associate_public_ip_address      = false
   tags                             = merge(
                                         {
-                                          Name        = "private_ec2.${var.name}"
+                                          Name        = "Mysql_ec2.${var.name}"
                                           Environment = var.environment
                                         },
                                         var.tags
