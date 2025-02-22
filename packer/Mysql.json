@@ -60,7 +60,13 @@
         ]
       }
 
-    ]
+    ],
+    "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json"
+    }
+  ]
 
 
 }
