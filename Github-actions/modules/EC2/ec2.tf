@@ -52,7 +52,7 @@ resource "aws_key_pair" "this" {
 
 
 resource "aws_instance" "public_instance_module" {
-  ami                         =  var.ami
+  ami                         =  var.ami_fe
   instance_type               =  var.instance_type
   key_name                    =  aws_key_pair.this.key_name
   subnet_id                   =  var.Public_subnet_id
@@ -70,8 +70,30 @@ resource "aws_instance" "public_instance_module" {
 
 #private_ec2
 
-resource "aws_instance" "private_instance_module" {
-  ami                              = var.ami
+resource "aws_instance" "public_instance_module" {
+  ami                              = var.ami_be
+  instance_type                    = var.instance_type
+  key_name                         = aws_key_pair.this.key_name
+  subnet_id                        = var.public_subnet_id
+  iam_instance_profile             = "${var.ec2_instance_profile}"
+  security_groups                  = [var.private_sg] 
+  associate_public_ip_address      = false
+  tags                             = merge(
+                                        {
+                                          Name        = "private_ec2.${var.name}"
+                                          Environment = var.environment
+                                        },
+                                        var.tags
+                                          )
+
+}
+
+
+
+#private_ec2
+
+resource "aws_instance" "DB_instance_module" {
+  ami                              = var.ami_mysql
   instance_type                    = var.instance_type
   key_name                         = aws_key_pair.this.key_name
   subnet_id                        = var.Private_subnet_id
