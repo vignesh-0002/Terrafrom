@@ -52,9 +52,19 @@ variable "Private_rt_cidr" {
   type = string
 }
 
-variable "ami" {
+variable "ami_fe" {
   type = string
 }
+
+variable "ami_be" {
+  type = string
+}
+
+variable "ami_mysql" {
+  type = string
+}
+
+
 
 variable "instance_type" {
   type = string
