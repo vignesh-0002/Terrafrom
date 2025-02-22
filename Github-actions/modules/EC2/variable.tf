@@ -15,7 +15,9 @@ variable "private_sg" {}
 variable "name" {}
 variable "environment" {}
 variable "tags" {}
-variable "ami" {}
+variable "ami_fe" {}
+variable "ami_be" {}
+variable "ami_mysql" {}
 variable "instance_type" {}
 variable "ec2_instance_profile" {}
 variable "keypair-name" {}
