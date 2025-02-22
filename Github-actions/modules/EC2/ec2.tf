@@ -74,10 +74,10 @@ resource "aws_instance" "BE_instance_module" {
   ami                              = var.ami_be
   instance_type                    = var.instance_type
   key_name                         = aws_key_pair.this.key_name
-  subnet_id                        = var.public_subnet_id
+  subnet_id                        = var.Public_subnet_id
   iam_instance_profile             = "${var.ec2_instance_profile}"
-  security_groups                  = [var.private_sg] 
-  associate_public_ip_address      = false
+  security_groups                  = [var.public_sg] 
+  associate_public_ip_address      = var.associate_public_ip_address
   tags                             = merge(
                                         {
                                           Name        = "BE_ec2.${var.name}"
